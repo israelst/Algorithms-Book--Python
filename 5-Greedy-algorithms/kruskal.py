@@ -6,9 +6,9 @@ def make_set(vertice):
     rank[vertice] = 0
 
 def find(vertice):
-    while parent[vertice] != vertice:
-        vertice = parent[vertice]
-    return vertice
+    if parent[vertice] != vertice:
+        parent[vertice] = find(parent[vertice])
+    return parent[vertice]
 
 def union(vertice1, vertice2):
     root1 = find(vertice1)
@@ -35,7 +35,7 @@ def kruskal(graph):
     return minimum_spanning_tree
 
 graph = {
-        'vertices': ['A', 'B', 'C', 'D', 'E', 'F'], 
+        'vertices': ['A', 'B', 'C', 'D', 'E', 'F'],
         'edges': set([
             (1, 'A', 'B'),
             (5, 'A', 'C'),
